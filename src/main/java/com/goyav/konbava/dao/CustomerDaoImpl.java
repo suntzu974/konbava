@@ -22,9 +22,11 @@ public class CustomerDaoImpl implements CustomerDao {
 
 	        try {
 	            connection = Factory.getConnection();
-	            preparedStatement = connection.prepareStatement("INSERT INTO products(name, account) VALUES(?, ?);");
+	            preparedStatement = connection.prepareStatement("INSERT INTO customers (name, address, postal, town) VALUES(?, ?, ?, ?);");
 	            preparedStatement.setString(1, customer.getName());
-	            preparedStatement.setDouble(2, customer.getAccount());
+	            preparedStatement.setString(2, customer.getAddress());
+				preparedStatement.setString(3, customer.getTown());
+				preparedStatement.setString(4, customer.getPostal());
 
 	            preparedStatement.executeUpdate();
 	        } catch (SQLException e) {
@@ -43,15 +45,19 @@ public class CustomerDaoImpl implements CustomerDao {
 	        try {
 	            connection = Factory.getConnection();
 	            statement = connection.createStatement();
-	            resultat = statement.executeQuery("SELECT name, account FROM products;");
+	            resultat = statement.executeQuery("SELECT name, address, town, postal FROM customers;");
 
 	            while (resultat.next()) {
 	                String name = resultat.getString("name");
-	                Double account = resultat.getDouble("account");
+					String address =  resultat.getString("address");
+					String postal = resultat.getString("postal");
+					String town = resultat.getString("town");
 
 	                Customer customer = new Customer();
 	                customer.setName(name);
-	                customer.setAccount(account);
+					customer.setAddress(address);
+					customer.setTown(town);
+					customer.setPostal(postal);
 
 	                customers.add(customer);
 	            }

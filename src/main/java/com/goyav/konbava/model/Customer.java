@@ -5,38 +5,62 @@ import java.util.Date;
 public class Customer {
 	private int Id;
 	private String Name;
-	private Double Account;
+	private String Address;
+	private String Postal;
+	private String Town;
 	
-	
+
 	public Customer() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
-	public Customer(String name, Double account) {
+
+	public Customer( String Name, String Address, String Postal, String Town) {
 		super();
-		Name = name;
-		Account = account;
+		this.Name = Name;
+		this.Address = Address;
+		this.Postal = Postal;
+		this.Town = Town;
 	}
+
 	public int getId() {
-		return Id;
+		return this.Id;
 	}
-	public void setId(int id) {
-		Id = id;
+
+	public void setId(int Id) {
+		this.Id = Id;
 	}
+
 	public String getName() {
-		return Name;
+		return this.Name;
 	}
-	public void setName(String name) {
-		Name = name;
+
+	public void setName(String Name) {
+		this.Name = Name;
 	}
-	public Double getAccount() {
-		return Account;
+
+	public String getAddress() {
+		return this.Address;
 	}
-	public void setAccount(Double account) {
-		Account = account;
+
+	public void setAddress(String Address) {
+		this.Address = Address;
 	}
-	
-	
+
+	public String getPostal() {
+		return this.Postal;
+	}
+
+	public void setPostal(String Postal) {
+		this.Postal = Postal;
+	}
+
+	public String getTown() {
+		return this.Town;
+	}
+
+	public void setTown(String Town) {
+		this.Town = Town;
+	}
 	
 
 }

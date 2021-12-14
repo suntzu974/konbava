@@ -7,27 +7,27 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.goyav.konbava.dao.CustomerDao;
 import com.goyav.konbava.dao.Factory;
-import com.goyav.konbava.model.Customer;
+import com.goyav.konbava.dao.UserDao;
+import com.goyav.konbava.model.User;
 
 /**
- * Servlet implementation class CustomerServlet
+ * Servlet implementation class UserServlet
  */
-@WebServlet("/customers")
-public class CustomerServlet extends HttpServlet {
+@WebServlet("/users")
+public class UserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private CustomerDao customerdao;
+	private UserDao userdao;
 	
     public void init() throws ServletException {
     	Factory factory = Factory.getInstance();
-    	this.customerdao = factory.getCustomerDao();
+    	this.userdao = factory.getUserDao();
     	
     }
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CustomerServlet() {
+    public UserServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -37,8 +37,8 @@ public class CustomerServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.setAttribute("customers", customerdao.getCustomers());
-		this.getServletContext().getRequestDispatcher("/WEB-INF/views/customers.jsp").forward(request, response);
+		request.setAttribute("users", userdao.getUsers());
+		this.getServletContext().getRequestDispatcher("/WEB-INF/views/users.jsp").forward(request, response);
 	}
 
 	/**
@@ -46,14 +46,12 @@ public class CustomerServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		Customer customer = new Customer();
-		customer.setName(request.getParameter("name"));
-		customer.setAddress(request.getParameter("address"));
-		customer.setTown(request.getParameter("town"));
-		customer.setPostal(request.getParameter("postal"));
-		customerdao.insert(customer);
-		request.setAttribute("customers", customerdao.getCustomers());
-		this.getServletContext().getRequestDispatcher("/WEB-INF/views/customers.jsp").forward(request,response);
+		User user = new User();
+		user.setName(request.getParameter("name"));
+		userdao.insert(user);
+		request.setAttribute("users", userdao.getUsers());
+		this.getServletContext().getRequestDispatcher("/WEB-INF/views/users.jsp").forward(request,response);
+
 	}
 
 }
