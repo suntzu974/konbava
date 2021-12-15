@@ -118,15 +118,17 @@ public class CustomerDaoImpl implements CustomerDao {
 	        try {
 	            connection = Factory.getConnection();
 	            statement = connection.createStatement();
-	            resultat = statement.executeQuery("SELECT name, address, town, postal FROM customers;");
+	            resultat = statement.executeQuery("SELECT id, name, address, town, postal FROM customers;");
 
 	            while (resultat.next()) {
+					Integer id = resultat.getInt("id");
 	                String name = resultat.getString("name");
 					String address =  resultat.getString("address");
 					String postal = resultat.getString("postal");
 					String town = resultat.getString("town");
 
 	                Customer customer = new Customer();
+					customer.setId(id);
 	                customer.setName(name);
 					customer.setAddress(address);
 					customer.setTown(town);

@@ -31,8 +31,8 @@
                         <td><c:out value="${ customer.address }" /></td>         
                         <td><c:out value="${ customer.postal }" /></td>         
                         <td><c:out value="${ customer.town }" /></td>  
-                        <form action="customers" method="put"><td><button type="submit" name="put" value="${customer.id}">Update</button></td></form>
-                        <form action="customers" method="delete"><td><button type="submit" name="delete" value="${customer.id}">Delete</button></td></form>
+                        <td><a class="btn btn-primary" href="${contextPath}/edit?id=<c:out value='${customer.id}' />" role="button">Update</a></td>
+                        <td><a class="btn btn-primary" href="${contextPath}/delete?id=<c:out value='${customer.id}' />" role="button">Delete</a></td>
                     </tr>
                 </c:forEach>
             </tbody>
