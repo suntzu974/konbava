@@ -13,6 +13,10 @@ public class Customer {
 	public Customer() {
 		super();
 	}
+	public Customer(Integer Id) {
+		super();
+		this.Id = Id;
+	}
 
 
 	public Customer( Integer Id, String Name, String Address, String Postal, String Town) {

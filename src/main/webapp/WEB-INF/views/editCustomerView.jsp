@@ -13,7 +13,7 @@
         <h1>Customers Update</h1>
         <div class="card">
             <div class="card-body">
-                <form method="put" action="customers">
+                <form method="post" action="update">
                     <div class="form-group row">
                         <label for="name" class="col-sm-2 col-form-label">Name</label>
                         <div class="col-sm-7">

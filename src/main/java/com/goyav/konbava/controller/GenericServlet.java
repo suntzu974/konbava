@@ -31,6 +31,14 @@ public class GenericServlet extends HttpServlet {
 	}
 
 	/**
+	 * @see Servlet#getServletInfo()
+	 */
+	public String getServletInfo() {
+		// TODO Auto-generated method stub
+		return null; 
+	}
+
+	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -57,6 +65,27 @@ public class GenericServlet extends HttpServlet {
 	 * @see HttpServlet#doDelete(HttpServletRequest, HttpServletResponse)
 	 */
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+	}
+
+	/**
+	 * @see HttpServlet#doHead(HttpServletRequest, HttpServletResponse)
+	 */
+	protected void doHead(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+	}
+
+	/**
+	 * @see HttpServlet#doOptions(HttpServletRequest, HttpServletResponse)
+	 */
+	protected void doOptions(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+	}
+
+	/**
+	 * @see HttpServlet#doTrace(HttpServletRequest, HttpServletResponse)
+	 */
+	protected void doTrace(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	}
 

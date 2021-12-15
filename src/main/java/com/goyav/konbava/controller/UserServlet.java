@@ -47,7 +47,7 @@ public class UserServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		User user = new User();
-		user.setName(request.getParameter("name"));
+		user.setUsername(request.getParameter("name"));
 		userdao.insert(user);
 		request.setAttribute("users", userdao.getUsers());
 		this.getServletContext().getRequestDispatcher("/WEB-INF/views/users.jsp").forward(request,response);

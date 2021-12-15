@@ -5,9 +5,10 @@ import java.util.List;
 import com.goyav.konbava.model.Customer;
 
 public interface CustomerDao {
-	void insert(Customer customer);
-	void update(Customer customer);
-	void delete(Customer customer);
+	boolean insert(Customer customer);
+	boolean update(Customer customer);
+	boolean delete(Customer customer);
+	Customer getCustomer(int id); 
 	List<Customer> getCustomers();
 	
 

@@ -36,8 +36,8 @@
                     </tr>
                 </c:forEach>
             </tbody>
-            <form action="customers" method="post">
-              <a href="${contextPath}/customers">Add</a>
+            <form action="new" method="post">
+              <button type="submit" class="btn btn-success">Add</button>
             </form>
     </table>
   </div>

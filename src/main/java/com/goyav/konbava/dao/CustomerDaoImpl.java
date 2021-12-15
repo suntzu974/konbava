@@ -16,9 +16,10 @@ public class CustomerDaoImpl implements CustomerDao {
 		this.factory = factory;
 	}
 	 @Override
-	    public void insert(Customer customer) {
+	    public boolean insert(Customer customer) {
 	        Connection connection = null;
 	        PreparedStatement preparedStatement = null;
+			boolean rowInserted = false;
 
 	        try {
 	            connection = Factory.getConnection();
@@ -28,17 +29,18 @@ public class CustomerDaoImpl implements CustomerDao {
 				preparedStatement.setString(3, customer.getTown());
 				preparedStatement.setString(4, customer.getPostal());
 
-	            preparedStatement.executeUpdate();
+	            rowInserted = preparedStatement.executeUpdate() > 0;
 	        } catch (SQLException e) {
 	            e.printStackTrace();
 	        }
-
+			return rowInserted;
 	    }
 
 		@Override
-	    public void update(Customer customer) {
+	    public boolean update(Customer customer) {
 	        Connection connection = null;
 	        PreparedStatement preparedStatement = null;
+			boolean rowUpdated = false;
 
 	        try {
 	            connection = Factory.getConnection();
@@ -49,27 +51,59 @@ public class CustomerDaoImpl implements CustomerDao {
 				preparedStatement.setString(4, customer.getPostal());
 				preparedStatement.setInt(5, customer.getId());
 
-	            preparedStatement.executeUpdate();
+	            rowUpdated = preparedStatement.executeUpdate() > 0;
 	        } catch (SQLException e) {
 	            e.printStackTrace();
 	        }
+			return rowUpdated;
 
 	    }
 
 		@Override
-	    public void delete(Customer customer) {
+	    public boolean delete(Customer customer) {
 	        Connection connection = null;
 	        PreparedStatement preparedStatement = null;
+			boolean rowDeleted = false;
 
 	        try {
 	            connection = Factory.getConnection();
 	            preparedStatement = connection.prepareStatement("DELETE FROM customers WHERE id = ?;");
 				preparedStatement.setInt(1, customer.getId());
-
-	            preparedStatement.executeUpdate();
+				rowDeleted = preparedStatement.executeUpdate() > 0;
 	        } catch (SQLException e) {
 	            e.printStackTrace();
 	        }
+			return rowDeleted;	
+	    }
+		@Override
+	    public Customer getCustomer(int id) {
+	        PreparedStatement preparedStatement = null;
+			Connection connection = null;
+	        ResultSet resultat = null;
+			Customer customer = new Customer();
+
+	        try {
+	            connection = Factory.getConnection();
+				preparedStatement = connection.prepareStatement("DELETE FROM customers WHERE id = ?;");
+				preparedStatement.setInt(1, id);
+	            resultat = preparedStatement.executeQuery();
+
+	            if (resultat.next()) {
+	                String name = resultat.getString("name");
+					String address =  resultat.getString("address");
+					String postal = resultat.getString("postal");
+					String town = resultat.getString("town");
+
+	                customer.setName(name);
+					customer.setAddress(address);
+					customer.setTown(town);
+					customer.setPostal(postal);
+	            }
+
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+			return customer;
 
 	    }
 
