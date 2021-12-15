@@ -22,8 +22,10 @@ public class UserDaoImpl implements UserDao {
 
 	        try {
 	            connection = Factory.getConnection();
-	            preparedStatement = connection.prepareStatement("INSERT INTO users (name) VALUES(?);");
-	            preparedStatement.setString(1, user.getName());
+	            preparedStatement = connection.prepareStatement("INSERT INTO users (username,email,password) VALUES(?,?,?);");
+	            preparedStatement.setString(1, user.getUsername());
+	            preparedStatement.setString(2, user.getEmail());
+	            preparedStatement.setString(3, user.getPassword());
 
 	            preparedStatement.executeUpdate();
 	        } catch (SQLException e) {
@@ -42,13 +44,17 @@ public class UserDaoImpl implements UserDao {
 	        try {
 	            connection = Factory.getConnection();
 	            statement = connection.createStatement();
-	            resultat = statement.executeQuery("SELECT name FROM users;");
+	            resultat = statement.executeQuery("SELECT username,email,password FROM users;");
 
 	            while (resultat.next()) {
-	                String name = resultat.getString("name");
+	                String username = resultat.getString("username");
+	                String email = resultat.getString("email");
+	                String password = resultat.getString("password");
 
 	                User user = new User();
-	                user.setName(name);
+	                user.setUsername(username);
+	                user.setEmail(email);
+	                user.setPassword(password);
 	                users.add(user);
 	            }
 	        } catch (SQLException e) {

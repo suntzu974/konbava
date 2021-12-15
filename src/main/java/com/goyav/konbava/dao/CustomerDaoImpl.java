@@ -35,7 +35,46 @@ public class CustomerDaoImpl implements CustomerDao {
 
 	    }
 
-	    @Override
+		@Override
+	    public void update(Customer customer) {
+	        Connection connection = null;
+	        PreparedStatement preparedStatement = null;
+
+	        try {
+	            connection = Factory.getConnection();
+	            preparedStatement = connection.prepareStatement("UPDATE customers set name = ?, address = ?, postal = ?, town = ? WHERE id = ?;");
+	            preparedStatement.setString(1, customer.getName());
+	            preparedStatement.setString(2, customer.getAddress());
+				preparedStatement.setString(3, customer.getTown());
+				preparedStatement.setString(4, customer.getPostal());
+				preparedStatement.setInt(5, customer.getId());
+
+	            preparedStatement.executeUpdate();
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+
+	    }
+
+		@Override
+	    public void delete(Customer customer) {
+	        Connection connection = null;
+	        PreparedStatement preparedStatement = null;
+
+	        try {
+	            connection = Factory.getConnection();
+	            preparedStatement = connection.prepareStatement("DELETE FROM customers WHERE id = ?;");
+				preparedStatement.setInt(1, customer.getId());
+
+	            preparedStatement.executeUpdate();
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+
+	    }
+
+
+		@Override
 	    public List<Customer> getCustomers() {
 	        List<Customer> customers = new ArrayList<Customer>();
 	        Connection connection = null;

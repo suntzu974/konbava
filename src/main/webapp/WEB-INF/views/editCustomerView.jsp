@@ -6,14 +6,14 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>Test</title>
+<title>Csutomers</title>
 </head>
 <body>
     <div class="container">
-        <h1>Customers Form:</h1>
+        <h1>Customers Update</h1>
         <div class="card">
             <div class="card-body">
-                <form method="post" action="customers">
+                <form method="put" action="customers">
                     <div class="form-group row">
                         <label for="name" class="col-sm-2 col-form-label">Name</label>
                         <div class="col-sm-7">
@@ -43,14 +43,6 @@
             </div>
         </div>
     </div>
-    <ul>
-        <c:forEach var="customer" items="${ customers }">
-            <li><c:out value="${ customer.name }" /> 
-                <c:out value="${ customer.address }" />
-                <c:out value="${ customer.town }" />
-                <c:out value="${ customer.postal }" />
-            </li>
-        </c:forEach>
-    </ul>    
+    
 </body>
 </html>

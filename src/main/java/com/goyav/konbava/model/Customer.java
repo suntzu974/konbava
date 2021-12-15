@@ -14,6 +14,16 @@ public class Customer {
 		super();
 	}
 
+
+	public Customer( Integer Id, String Name, String Address, String Postal, String Town) {
+		super();
+		this.Id = Id;
+		this.Name = Name;
+		this.Address = Address;
+		this.Postal = Postal;
+		this.Town = Town;
+	}
+
 	public Customer( String Name, String Address, String Postal, String Town) {
 		super();
 		this.Name = Name;

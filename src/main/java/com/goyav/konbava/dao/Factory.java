@@ -28,8 +28,8 @@ public class Factory {
 			} catch (ClassNotFoundException e) {
 			
 		}
-
-		Factory instance = new Factory ("jdbc:postgresql://localhost:5432/moinlela?user=suntzu974&password=HpNKUsNN27031968&ssl=true;");
+		
+		Factory instance = new Factory ("jdbc:postgresql://localhost:5432/konbava?user=suntzu974&password=HpNKUsNN27031968&ssl=true;");
 		return instance;
 	}
 	public static Connection getConnection() throws SQLException  {

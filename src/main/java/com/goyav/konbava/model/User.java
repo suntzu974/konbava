@@ -4,28 +4,51 @@ import java.util.Date;
 
 public class User {
 	private int Id;
-	private String Name;
-	
-	
+	private String Username;
+	private String Password;
+	private String Email;
+
+
 	public User() {
-		super();
-		// TODO Auto-generated constructor stub
 	}
-	public User(String name) {
-		super();
-		Name = name;
+
+	public User( String Username, String Password, String Email) {
+		this.Username = Username;
+		this.Password = Password;
+		this.Email = Email;
 	}
+
 	public int getId() {
-		return Id;
+		return this.Id;
 	}
-	public void setId(int id) {
-		Id = id;
+
+	public void setId(int Id) {
+		this.Id = Id;
 	}
-	public String getName() {
-		return Name;
+
+	public String getUsername() {
+		return this.Username;
 	}
-	public void setName(String name) {
-		Name = name;
+
+	public void setUsername(String Username) {
+		this.Username = Username;
 	}
+
+	public String getPassword() {
+		return this.Password;
+	}
+
+	public void setPassword(String Password) {
+		this.Password = Password;
+	}
+
+	public String getEmail() {
+		return this.Email;
+	}
+
+	public void setEmail(String Email) {
+		this.Email = Email;
+	}
+	
 
 }
