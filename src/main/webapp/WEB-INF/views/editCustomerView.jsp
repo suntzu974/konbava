@@ -3,12 +3,13 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>	
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>Csutomers</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">  
 </head>
 <body>
+    <jsp:include page="../shared/header.jsp" />  
     <div class="container">
         <h1>Customers Update</h1>
         <div class="card">
@@ -16,7 +17,7 @@
                 <form method="post" action="${contextPath}/customers/update">
                     <div class="form-group row">
                         <div class="col-sm-7">
-                             <input type=text" class="form-control" value="${ customer.id }" name="name"  placeholder="Enter name" id="name">
+                             <input type="hidden" class="form-control" value="${ customer.id }" name="id"  placeholder="Id" id="id">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -48,6 +49,7 @@
             </div>
         </div>
     </div>
-    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>  
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>  
 </body>
 </html>

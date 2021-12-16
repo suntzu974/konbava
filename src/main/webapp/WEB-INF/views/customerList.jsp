@@ -32,7 +32,7 @@
                         <td><c:out value="${ customer.postal }" /></td>         
                         <td><c:out value="${ customer.town }" /></td>  
                         <td><a class="btn btn-primary" href="${contextPath}/customers/edit?id=<c:out value='${customer.id}' />" role="button">Update</a></td>
-                        <td><a class="btn btn-primary" href="${contextPath}/customers/delete?id=<c:out value='${customer.id}' />" role="button">Delete</a></td>
+                        <td><a class="btn btn-primary" href="${contextPath}/customers/remove?id=<c:out value='${customer.id}' />" role="button">Delete</a></td>
                     </tr>
                 </c:forEach>
             </tbody>

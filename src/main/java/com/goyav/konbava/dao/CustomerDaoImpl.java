@@ -60,7 +60,7 @@ public class CustomerDaoImpl implements CustomerDao {
 	    }
 
 		@Override
-	    public boolean delete(Customer customer) {
+	    public boolean delete(int id) {
 	        Connection connection = null;
 	        PreparedStatement preparedStatement = null;
 			boolean rowDeleted = false;
@@ -68,7 +68,7 @@ public class CustomerDaoImpl implements CustomerDao {
 	        try {
 	            connection = Factory.getConnection();
 	            preparedStatement = connection.prepareStatement("DELETE FROM customers WHERE id = ?;");
-				preparedStatement.setInt(1, customer.getId());
+				preparedStatement.setInt(1, id);
 				rowDeleted = preparedStatement.executeUpdate() > 0;
 	        } catch (SQLException e) {
 	            e.printStackTrace();

@@ -56,11 +56,14 @@ public class CustomerServlet extends HttpServlet {
 				case "/customers/insert":
 					insertCustomer(request, response);
 					break;
-				case "/customers//delete":
-					deleteCustomer(request, response);
+				case "/customers/remove":
+					showDeleteForm(request, response);
 					break;
 				case "/customers/edit":
 					showEditForm(request, response);
+					break;
+				case "/customers/delete":
+					deleteCustomer(request, response);
 					break;
 				case "/customers/update":
 					updateCustomer(request, response);
@@ -87,6 +90,12 @@ public class CustomerServlet extends HttpServlet {
 		request.setAttribute("customer", existingCustomer);	
 		this.getServletContext().getRequestDispatcher("/WEB-INF/views/editCustomerView.jsp").forward(request,response);
 	}
+	private void showDeleteForm(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException {
+		int id = Integer.parseInt(request.getParameter("id"));
+        Customer existingCustomer = customerdao.getCustomer(id);
+		request.setAttribute("customer", existingCustomer);	
+		this.getServletContext().getRequestDispatcher("/WEB-INF/views/deleteCustomerView.jsp").forward(request,response);
+	}
 	private void insertCustomer(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException {
 		Customer customer = new Customer();
 		customer.setName(request.getParameter("name"));
@@ -100,8 +109,7 @@ public class CustomerServlet extends HttpServlet {
 
 	private void deleteCustomer(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException {
 		int id = Integer.parseInt(request.getParameter("id"));
-		Customer customer = new Customer(id);
-		customerdao.delete(customer);
+		customerdao.delete(id);
 		request.setAttribute("customers", customerdao.getCustomers());
 		this.getServletContext().getRequestDispatcher("/WEB-INF/views/customerList.jsp").forward(request,response);
 	}
