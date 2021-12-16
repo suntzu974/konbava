@@ -31,13 +31,13 @@
                         <td><c:out value="${ customer.address }" /></td>         
                         <td><c:out value="${ customer.postal }" /></td>         
                         <td><c:out value="${ customer.town }" /></td>  
-                        <td><a class="btn btn-primary" href="${contextPath}/edit?id=<c:out value='${customer.id}' />" role="button">Update</a></td>
-                        <td><a class="btn btn-primary" href="${contextPath}/delete?id=<c:out value='${customer.id}' />" role="button">Delete</a></td>
+                        <td><a class="btn btn-primary" href="${contextPath}/customers/edit?id=<c:out value='${customer.id}' />" role="button">Update</a></td>
+                        <td><a class="btn btn-primary" href="${contextPath}/customers/delete?id=<c:out value='${customer.id}' />" role="button">Delete</a></td>
                     </tr>
                 </c:forEach>
             </tbody>
-            <form action="new" method="post">
-              <button type="submit" class="btn btn-success">Add</button>
+            <form action="${contextPath}/customers/new" method="post">
+              <button type="submit" class="btn btn-success">New</button>
             </form>
     </table>
   </div>

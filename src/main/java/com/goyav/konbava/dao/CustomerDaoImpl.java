@@ -84,17 +84,19 @@ public class CustomerDaoImpl implements CustomerDao {
 
 	        try {
 	            connection = Factory.getConnection();
-				preparedStatement = connection.prepareStatement("DELETE FROM customers WHERE id = ?;");
+				preparedStatement = connection.prepareStatement("SELECT id,name, address, postal,town FROM customers WHERE id = ?;");
 				preparedStatement.setInt(1, id);
 	            resultat = preparedStatement.executeQuery();
 
 	            if (resultat.next()) {
+	                Integer ident = resultat.getInt("id");
 	                String name = resultat.getString("name");
 					String address =  resultat.getString("address");
 					String postal = resultat.getString("postal");
 					String town = resultat.getString("town");
 
-	                customer.setName(name);
+					customer.setId(ident);
+					customer.setName(name);
 					customer.setAddress(address);
 					customer.setTown(town);
 					customer.setPostal(postal);

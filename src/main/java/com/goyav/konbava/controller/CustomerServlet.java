@@ -15,7 +15,7 @@ import com.goyav.konbava.model.Customer;
 /**
  * Servlet implementation class CustomerServlet
  */
-@WebServlet("/")
+@WebServlet(name = "CustomerServlet", urlPatterns = {"/"})
 public class CustomerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private CustomerDao customerdao;
@@ -37,31 +37,32 @@ public class CustomerServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
+		doGet(request,response);
 	}
-	
+
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)	throws ServletException, IOException {
 		String action = request.getServletPath();
 
 		try {
 			switch (action) {
-				case "/new":
+				case "/customers/new":
 					showNewForm(request, response);
 					break;
-				case "/insert":
+				case "/customers/insert":
 					insertCustomer(request, response);
 					break;
-				case "/delete":
+				case "/customers//delete":
 					deleteCustomer(request, response);
 					break;
-				case "/edit":
+				case "/customers/edit":
 					showEditForm(request, response);
 					break;
-				case "/update":
+				case "/customers/update":
 					updateCustomer(request, response);
 					break;
 				default:

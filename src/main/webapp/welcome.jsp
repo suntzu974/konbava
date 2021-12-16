@@ -23,7 +23,7 @@
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Actions<span class="caret"></span></a>  
         <ul class="dropdown-menu">  
           <li><a href="${contextPath}/users">Users</a></li>  
-          <li><a href="${contextPath}/list">List All Customers</a></li>  
+          <li><a href="${contextPath}/customers">List All Customers</a></li>  
           <li><a href="#">Page 1-3</a></li>  
         </ul>  
       </li>  

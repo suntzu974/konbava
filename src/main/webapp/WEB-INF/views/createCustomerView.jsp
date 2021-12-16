@@ -13,7 +13,7 @@
         <h1>Customers Form</h1>
         <div class="card">
             <div class="card-body">
-                <form method="post" action="insert">
+                <form method="post" action="${contextPath}/customers/insert">
                     <div class="form-group row">
                         <label for="name" class="col-sm-2 col-form-label">Name</label>
                         <div class="col-sm-7">
@@ -38,7 +38,7 @@
                              <input type="text" class="form-control" name="postal"  placeholder="Enter Postal code" id="postal">
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
                 </form>
             </div>
         </div>
